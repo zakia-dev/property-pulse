@@ -11,6 +11,7 @@ const  Navbar=()=> {
   const { data: session, status } = useSession();
   console.log("Session Status:", status); // Check if it logs "loading" or "authenticated"
   console.log("Session Data:", session);
+  const profileImage = session?.user?.image;
   const [isMobileMenuOpen,setMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen,setProfileMenuOpen] = useState(false);
   const [providers, setProviders]= useState(null);
@@ -181,7 +182,9 @@ const  Navbar=()=> {
                 <span className="sr-only">Open user menu</span>
                 <Image
                   className="h-8 w-8 rounded-full"
-                  src={ profileDefault}
+                  src={ profileImage ||profileDefault}
+                  width={40}
+                  height={40}
                   alt=""
                 />
               </button>
@@ -205,6 +208,7 @@ const  Navbar=()=> {
                 role="menuitem"
                 tabIndex="-1"
                 id="user-menu-item-0"
+                onClick={() => setProfileMenuOpen(false)}
                 >Your Profile</Link>
               <Link
                 href="/properties/saved"
@@ -212,12 +216,17 @@ const  Navbar=()=> {
                 role="menuitem"
                 tabIndex="-1"
                 id="user-menu-item-2"
+                onClick={() => setProfileMenuOpen(false)}
                 >Saved Properties</Link>
               <button
                 className="block px-4 py-2 text-sm text-gray-700"
                 role="menuitem"
                 tabIndex="-1"
                 id="user-menu-item-2"
+                onClick={()=> {
+                  setProfileMenuOpen(false)
+                  signOut();
+                }}
               >
                 Sign Out
               </button>
