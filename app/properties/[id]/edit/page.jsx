@@ -5,7 +5,8 @@ import { convertToSerializeObject } from "@/utils/convertToObjects";
 const EditPage =  async ({params}) => {
     await connectDB();
     
-    const propertyDoc = await Property.findById(params.id).lean();
+    const { id: propertyId } = await params;
+    const propertyDoc = await Property.findById(propertyId).lean();
     const property = convertToSerializeObject(propertyDoc);
     if(!property){
         return <h1 className="text-center text-2xl font-bold mt-10">

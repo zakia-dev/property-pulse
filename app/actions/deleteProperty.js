@@ -6,6 +6,7 @@ import { getSessionUser } from "@/utils/getSessionUser";
 import { error } from "console";
 import { revalidatePath } from "next/cache";
 
+
 async function deleteProperty(propertyId){
     const sessionUser = await getSessionUser();
 
@@ -31,6 +32,7 @@ async function deleteProperty(propertyId){
         if(publicIds.length > 0){
             for(let publicId of publicIds) {
                 await cloudinary.uploader.destroy('property-pulse/' + publicId);
+                console.log("Delete result:", result);
             }
         }
 

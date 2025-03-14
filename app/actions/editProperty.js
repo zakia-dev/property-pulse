@@ -66,6 +66,8 @@ async function EditProperty(propertyId, formData) {
     console.log("Redirecting to:", `/properties/${updatedProperty._id}`);
 
     redirect(`/properties/${updatedProperty._id}`);
+
+    //AIzaSyBBlixIiZjfZZwEA7GJFIFYhRn5N6GxWyM
         
 
 
