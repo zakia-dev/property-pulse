@@ -9,9 +9,6 @@ const  MessageCard =({message})=> {
     const [isDelete, setIsDelete] = useState(false);
     const {setUnreadCount} = useGlobalContext();
 
-
-
-
     const handleReadClick = async () => {
         const read = await MarkMessageAsRead(message._id);
         setIsRead(read);

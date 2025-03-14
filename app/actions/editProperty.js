@@ -67,10 +67,6 @@ async function EditProperty(propertyId, formData) {
 
     redirect(`/properties/${updatedProperty._id}`);
 
-    //AIzaSyBBlixIiZjfZZwEA7GJFIFYhRn5N6GxWyM
-        
-
-
     
 } 
 
